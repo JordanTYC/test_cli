@@ -10,33 +10,30 @@
   </head>
   <body>
     <main id="game" class="game" aria-label="Soie et Venin">
-      <canvas id="rive-canvas" aria-label="Zone de jeu. Cliquez pour donner le focus au jeu." tabindex="0"></canvas>
-
+      <canvas id="rive-canvas" aria-label="Zone de jeu" tabindex="0"></canvas>
       <div class="topbar" aria-label="Commandes du lecteur">
         <span class="wordmark">SOIE <i>ET</i> VENIN</span>
-        <span id="runtime-status" class="status" role="status">INITIALISATION</span>
-        <button id="fullscreen-button" class="icon-button" type="button" aria-label="Passer en plein écran" title="Plein écran (F11)">
+        <span id="runtime-status" class="status" role="status">CHARGEMENT</span>
+        <button id="audio-button" class="audio-button" type="button" hidden>Activer le son</button>
+        <button id="fullscreen-button" class="icon-button" type="button" aria-label="Passer en plein écran" title="Plein écran">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5" /></svg>
         </button>
       </div>
-
-      <section id="gate" class="gate" aria-live="polite">
+      <section id="gate" class="gate" aria-live="polite" aria-busy="true">
         <div class="gate-panel">
           <p class="eyebrow">UNE ARÈNE DE SOIE ET DE VENIN</p>
-          <h1 id="gate-title">Préparation du combat</h1>
-          <p id="gate-message">Chargement du runtime Rive…</p>
-          <div class="gate-actions">
-            <button id="play-button" class="primary-button" type="button" disabled>ENTRER DANS L’ARÈNE</button>
-            <label class="file-button" for="rive-file">Choisir un fichier .riv</label>
-            <input id="rive-file" type="file" accept=".riv,application/octet-stream" />
+          <h1 id="gate-title">Soie et Venin</h1>
+          <p id="gate-message">Préparation du jeu…</p>
+          <div id="loading-progress" class="loading-progress">
+            <progress id="progress-bar" max="100" aria-label="Téléchargement du jeu"></progress>
+            <output id="progress-value" aria-live="off">…</output>
           </div>
-          <p class="gate-hint">Manette : branche-la avant ou après le démarrage. La croix / le stick gauche déplacent Hornet.</p>
+          <button id="retry-button" class="primary-button" type="button" hidden>RÉESSAYER</button>
         </div>
       </section>
-
       <div id="toast" class="toast" role="status" aria-live="polite"></div>
     </main>
-    <script src="https://unpkg.com/@rive-app/webgl2@2.44.0/rive.js"></script>
+    <script src="https://unpkg.com/@rive-app/webgl2@2.44.0/rive.js" defer></script>
     <script src="src/main.js" defer></script>
   </body>
 </html>
