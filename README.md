@@ -1,6 +1,6 @@
 # Soie et Venin — site statique
 
-Le jeu se télécharge automatiquement dès l’arrivée sur la page. Seul `soie-et-venin.riv`, placé à côté de `index.html`, est chargé. Aucun sélecteur de fichier n’est proposé.
+Le jeu se télécharge automatiquement dès l’arrivée sur la page. Une fois prêt, « Entrer dans l’arène » lance le jeu et sa musique avec un seul clic. Seul `soie-et-venin.riv`, placé à côté de `index.html`, est chargé. Aucun sélecteur de fichier n’est proposé.
 
 Le pourcentage correspond aux octets du jeu reçus lorsque le serveur fournit sa taille. Ensuite, « Préparation de l’arène » couvre le décodage des ressources et l’initialisation du rendu : cette étape n’a pas de pourcentage mesurable. L’écran disparaît uniquement après avoir vérifié que le contrôleur du jeu avance réellement.
 
@@ -14,7 +14,7 @@ Le site utilise le runtime WebGL2 officiel 2.44.0 depuis un CDN, l’artboard `S
 
 Publie directement ce dossier sur un hébergeur statique (GitHub Pages : branche du dépôt, dossier racine). Pour tester en local : `python -m http.server 8000` depuis ce dossier, puis `http://localhost:8000`.
 
-Le jeu démarre automatiquement. La musique intégrée au `.riv` s’active au premier clic (ou toucher). Le moteur audio de cette version du runtime ne se déverrouille pas au clavier ou à la manette : le bouton « Activer le son » reste donc disponible jusqu’à ce clic.
+Le combat reste en pause sur l’écran d’entrée. Le clic sur « Entrer dans l’arène » déverrouille la musique intégrée au `.riv` et démarre le combat ; le plein écran reste facultatif. Ce clic initial est nécessaire, car la manette seule ne déverrouille pas l’audio du navigateur.
 
 ## Commandes
 
