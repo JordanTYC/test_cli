@@ -101,7 +101,8 @@ function initializeGame(buffer) {
 }
 
 // Importing a .riv is not proof that its scripts executed. A signed build's
-// controller updates clock every frame; an unsigned build leaves it frozen.
+// controller updates clock every frame. Unsigned scripts or a runtime error
+// during initialization can both leave it frozen.
 function waitForController(generation) {
   const clock = player.viewModelInstance?.number('clock');
   if (!clock) throw new Error('Arena view model/clock is missing');
@@ -112,7 +113,7 @@ function waitForController(generation) {
       if (generation !== startupGeneration) return reject(new Error('Startup superseded'));
       if (clock.value > firstValue) return resolve();
       if (performance.now() >= deadline) {
-        return reject(new Error('Rive controller did not advance. Check script signatures: export with rive --publish=local, not --once or the CLI preview.'));
+        return reject(new Error('Rive controller did not advance. Check earlier Luau/GPU errors in the console. Also ensure the file was signed with rive --publish=local, not --once or the CLI preview.'));
       }
       window.requestAnimationFrame(check);
     }
