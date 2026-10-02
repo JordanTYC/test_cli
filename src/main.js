@@ -2,7 +2,7 @@
 
 const ARTBOARD = 'Soie et Venin';
 const STATE_MACHINE = 'Entrees et pause';
-const GAME_URL = new URL('./soie-et-venin.riv?v=20261002-cutout-1', document.baseURI);
+const GAME_URL = new URL('./soie-et-venin.riv?v=20261002-canvas-resize-1', document.baseURI);
 const canvas = document.querySelector('#rive-canvas');
 const gate = document.querySelector('#gate');
 const gateTitle = document.querySelector('#gate-title');
